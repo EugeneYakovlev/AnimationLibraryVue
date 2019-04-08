@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <v-app dark>
+        <v-layout row wrap>
+            <v-flex xs3 flat class="sideBarWrap">
+                <v-content>
+                    <app-sidebar></app-sidebar>
+                </v-content>
+            </v-flex>
+            <v-flex xs9>
+                <v-container>
+                    <v-content>
+                        <app-main></app-main>
+                    </v-content>
+                </v-container>
+            </v-flex>
+        </v-layout>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import Sidebar from './components/Sidebar.vue';
+    import Home from './components/Home.vue'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'App',
+        components: {
+            appSidebar: Sidebar,
+            appMain: Home
+        },
+        data() {
+            return {
+                //
+            }
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    .sideBarWrap {
+        background: #222;
+    }
 </style>

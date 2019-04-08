@@ -590,6 +590,7 @@
         top: 0;
         bottom: 0;
         margin: auto;
+
         background: #fff;
         width: 100px;
         height: 100px;

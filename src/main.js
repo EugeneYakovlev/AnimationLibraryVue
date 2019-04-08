@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Vuetify from 'vuetify'
+import './assets/animations.css'
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify);

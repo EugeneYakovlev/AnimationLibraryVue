@@ -438,6 +438,11 @@
                     <v-content>
                         <div class="workAreaWrap">
                             <div v-for="item in items" :class="item.itemClass">{{ item.itemText }}</div>
+                            <v-btn dark fab @click="replayAnimation()" class="replayButton">
+                                <i class="material-icons">
+                                    autorenew
+                                </i>
+                            </v-btn>
                         </div>
                     </v-content>
                 </v-container>
@@ -461,10 +466,8 @@
                 animationFilling: 'both',
                 animationIteration: '1',
                 animationFunction: 'ease'
-
             }
         },
-        name: 'App',
         methods: {
             addBlock() {
                 this.clearArray();
@@ -498,26 +501,28 @@
                 }
             },
             optionEvent(obj) {
-                let objAnimation;
-
                 let anObject = document.getElementsByClassName('blockExample')[0];
-
                 document.getElementsByClassName('animationSettings')[0].style.display = 'block';
 
                 anObject.style.animation = 'none';
-                console.log(objAnimation);
 
                 if (obj.target.parentElement.classList.contains('list')) {
                     this.animationName = obj.target.options[obj.target.options.selectedIndex].attributes.animation.value;
                 }
 
+                this.setAnimation();
+            },
+            setAnimation() {
+                let objAnimation;
+                let anObject = document.getElementsByClassName('blockExample')[0];
+                anObject.style.animation = 'none';
                 objAnimation = this.animationName + ' ' + this.animationDuration + 's ' + this.animationFunction + ' ' + this.animationDelay + 's ' + this.animationIteration + ' ' + this.animationDirection + ' ' + this.animationFilling;
-
                 setTimeout(function () {
                     anObject.style.animation = objAnimation;
                 }, 100);
-
-                console.log(objAnimation);
+            },
+            replayAnimation() {
+                this.setAnimation();
             }
         }
     }
@@ -594,5 +599,11 @@
         background: #fff;
         width: 100px;
         height: 100px;
+    }
+
+    .replayButton {
+        position: fixed !important;
+        top: 20px;
+        right: 20px;
     }
 </style>
